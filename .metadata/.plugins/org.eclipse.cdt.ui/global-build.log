@@ -1,0 +1,28 @@
+10:31:47 **** Incremental Build of configuration Debug for project stm-32-programming ****
+make -j8 all 
+arm-none-eabi-gcc "../Src/main.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DNUCLEO_F411RE -DSTM32 -DSTM32F4 -DSTM32F411RETx -DSTM32F411xE -c -I../Inc -I/home/santiago/STM32Cube/Repository/STM32Cube_FW_F4_V1.28.0/Drivers/CMSIS/Core/Include -I/home/santiago/STM32Cube/Repository/STM32Cube_FW_F4_V1.28.0/Drivers/CMSIS/Device/ST/STM32F4xx/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Src/main.d" -MT"Src/main.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Src/main.o"
+arm-none-eabi-gcc -o "stm-32-programming.elf" @"objects.list"   -mcpu=cortex-m4 -T"/home/santiago/github/stm32-course-saosorioh/stm-32-programming/STM32F411RETX_FLASH.ld" --specs=nosys.specs -Wl,-Map="stm-32-programming.map" -Wl,--gc-sections -static --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
+Finished building target: stm-32-programming.elf
+ 
+arm-none-eabi-size  stm-32-programming.elf 
+arm-none-eabi-objdump -h -S stm-32-programming.elf  > "stm-32-programming.list"
+   text	   data	    bss	    dec	    hex	filename
+    928	      0	   1568	   2496	    9c0	stm-32-programming.elf
+Finished building: default.size.stdout
+ 
+Finished building: stm-32-programming.list
+ 
+10:31:52 **** Incremental Build of configuration Debug for project stm-32-programming ****
+make -j8 all 
+arm-none-eabi-size  stm-32-programming.elf 
+   text	   data	    bss	    dec	    hex	filename
+    928	      0	   1568	   2496	    9c0	stm-32-programming.elf
+Finished building: default.size.stdout
+ 
+10:42:21 **** Incremental Build of configuration Debug for project stm-32-programming ****
+make -j8 all 
+arm-none-eabi-size  stm-32-programming.elf 
+   text	   data	    bss	    dec	    hex	filename
+    928	      0	   1568	   2496	    9c0	stm-32-programming.elf
+Finished building: default.size.stdout
+ 
