@@ -19,11 +19,23 @@
 #include <stdint.h>
 #include <stm32f4xx.h>
 
+//Variables
+
+
+//Cabeceras
+void init_gpio(void);
+void init_timers(void);
+void init_exti(void);
+
 int main(void)
 {
 
+		// configuracion de los elementos
+	init_gpio();
+	init_timers();
+	init_exti();
 
-
+		//Loop forever
 
 
 //Encender Led del GPI
@@ -96,6 +108,19 @@ int main(void)
 
 	return 0;
 }
+
+void init_exti(void)
+	//ISR para el EXTI1 con flanco de subida
+void EXTI1_IRQHandler(void){
+	if (EXTI->PR && EXTI_PR_PR1);{
+		//Limpiamos la bandera
+		EXTI ->PR |=EXTI_PR_PR1;
+		__NOP();
+	}
+
+}
+
+
 
 void TIM3_IRQHandler(void){
 
