@@ -60,7 +60,7 @@ main-build: stm-32-programming.elf secondary-outputs
 
 # Tool invocations
 stm-32-programming.elf stm-32-programming.map: $(OBJS) $(USER_OBJS) /home/santiago/github/stm32-course-saosorioh/stm-32-programming/STM32F411RETX_FLASH.ld makefile objects.list $(OPTIONAL_TOOL_DEPS)
-	arm-none-eabi-gcc -o "stm-32-programming.elf" @"objects.list" $(USER_OBJS) $(LIBS) -mcpu=cortex-m4 -T"/home/santiago/github/stm32-course-saosorioh/stm-32-programming/STM32F411RETX_FLASH.ld" --specs=nosys.specs -Wl,-Map="stm-32-programming.map" -Wl,--gc-sections -static --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
+	arm-none-eabi-gcc -o "stm-32-programming.elf" @"objects.list" $(USER_OBJS) $(LIBS) -mcpu=cortex-m4 -T"/home/santiago/github/stm32-course-saosorioh/stm-32-programming/STM32F411RETX_FLASH.ld" --specs=nosys.specs -Wl,-Map="stm-32-programming.map" -Wl,--gc-sections -static --specs=nano.specs -mfloat-abi=soft -mthumb -u _printf_float -u _scanf_float -Wl,--start-group -lc -lm -Wl,--end-group
 	@echo 'Finished building target: $@'
 	@echo ' '
 

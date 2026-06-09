@@ -19,115 +19,12 @@
 #include <stdint.h>
 #include <stm32f4xx.h>
 
-//Variables
-
-
-//Cabeceras
-void init_gpio(void);
-void init_timers(void);
-void init_exti(void);
+#if !defined(__SOFT_FP__) && defined(__ARM_FP)
+  #warning "FPU is not initialized, but the project is compiling for an FPU. Please initialize the FPU before use."
+#endif
 
 int main(void)
 {
-
-		// configuracion de los elementos
-	init_gpio();
-	init_timers();
-	init_exti();
-
-		//Loop forever
-
-
-//Encender Led del GPI
-
-
-	//RCC->AHB1ENR |= (1<<0); //De manera manual
-	RCC->AHB1ENR |= RCC_AHB1ENR_GPIOAEN; //Nombre del registro (RCC), del perifirico (AHB1ENR) y del(GPIOAEN) (ST no lo da)
-
-	GPIOA->MODER &= ~GPIO_MODER_MODER5;
-	GPIOA->MODER |= GPIO_MODER_MODE5_0;
-
-	GPIOA->OSPEEDR &= ~GPIO_OSPEEDER_OSPEEDR5;
-	GPIOA->OSPEEDR |= GPIO_OSPEEDER_OSPEEDR5_1;
-
-	//GPIOA->OTYPER &= ~(GPIO_OTYPER_OT5);
-
-	//(GPIOx_PUPDR)
-	GPIOA->PUPDR &= ~GPIO_PUPDR_PUPD5;
-	GPIOA->PUPDR |= GPIO_PUPDR_PUPD5_0;
-
-
-	GPIOA->ODR &= ~GPIO_ODR_OD5;
-
-
-
-
-//Timer Implementation timer 3
-	//Revisar en el datasheet donde esta la señal de reloj conectada al timer 3
-
-	RCC->APB1ENR &= ~(RCC_APB1ENR_TIM3EN);  //Limpiamos el registro
-	RCC->APB1ENR |= ~(RCC_APB1ENR_TIM3EN);  //Encedemos la señal de reloj
-
-
-
-	TIM3->CNT = 0;
-
-	TIM3->PSC = 15999; 	//La señal que incrementa el CNT es de 1KHz
-
-	TIM3->ARR = 249; 	//General una señal de 250ms
-
-	TIM3->CR1 &= ~(TIM_CR1_DIR);		//Configuracion de la señal
-
-	TIM3->CR1 &= ~(TIM_CR1_ARPE);		//limpiamos
-	TIM3->CR1 |= TIM_CR1_ARPE;		//Activamos
-
-							// Configurar NVIC del TIM3 (Enable IRQ)
-	__NVIC_EnableIRQ(TIM3_IRQn); 		//Activamos la IRQ del TIM3 para que el NVIC reciba la señal de ella
-
-
-	TIM3->SR &= ~(TIM_SR_UIF);		//Bajamos la bandera de la interrupcion del TIM3 (SR)
-
-	TIM3->DIER &= ~(TIM_DIER_UIE);		//Limpiamos
-	TIM3->DIER |= TIM_DIER_UIE;		//Activamos
-
-			//Lo ultimo es el CR_CEN
-
-	TIM3->CR1 |= TIM_CR1_CEN;	//Activamos
-
-
-
-
-
-
-
-	while(1){
-
-		//TIM3_IRQHandler();
-
-	}
-
-	return 0;
-}
-
-void init_exti(void)
-	//ISR para el EXTI1 con flanco de subida
-void EXTI1_IRQHandler(void){
-	if (EXTI->PR && EXTI_PR_PR1);{
-		//Limpiamos la bandera
-		EXTI ->PR |=EXTI_PR_PR1;
-		__NOP();
-	}
-
-}
-
-
-
-void TIM3_IRQHandler(void){
-
-
-		if(TIM3->SR && TIM_SR_UIF){
-			GPIOA->ODR ^= (GPIO_ODR_OD5);
-			TIM3->SR &= ~(TIM_SR_UIF);
-
-		}
+    /* Loop forever */
+	for(;;);
 }

@@ -28,4 +28,6 @@
 		<item key="DIALOG_HEIGHT" value="782"/>
 		<item key="DIALOG_FONT_NAME" value="1|Ubuntu|10.0|0|GTK|1|"/>
 	</section>
+	<section name="ImportExportAction">
+	</section>
 </section>
