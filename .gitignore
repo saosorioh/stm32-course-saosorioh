@@ -1,0 +1,7 @@
+# Eclipse / STM32CubeIDE workspace metadata
+.metadata/
+RemoteSystemsTempFiles/
+
+# Build output
+Debug/
+Release/
