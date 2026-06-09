@@ -1,0 +1,21 @@
+# STM32CubeIDE - workspace metadata
+.metadata/
+
+# STM32 project build artifacts
+**/Debug/
+**/Release/
+
+# STM32 project files generados por el IDE
+**/.settings/
+**/.cproject
+
+# Binarios
+*.elf
+*.bin
+*.hex
+*.o
+*.d
+*.su
+*.cyclo
+*.map
+*.list
