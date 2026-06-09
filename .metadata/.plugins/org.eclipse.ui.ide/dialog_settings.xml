@@ -8,10 +8,5 @@
 		<item key="SmartImportRootWizardPage.STORE_CLOSE_IMPORTED" value="false"/>
 		<item key="SmartImportRootWizardPage.STORE_NESTED_PROJECTS" value="true"/>
 		<item key="SmartImportRootWizardPage.STORE_CONFIGURE_NATURES" value="true"/>
-		<list key="org.eclipse.ui.internal.wizards.datatransfer.SmartImportRootWizardPage.knownSources">
-			<item value="/home/santiago/github/stm32-course-saosorioh/stm32-programming"/>
-			<item value="/home/santiago/github/stm32-course-saosorioh/stm32-programming/stm32_ejemplo"/>
-			<item value="/home/santiago/github/stm32-course-saosorioh/stm32_ejemplo"/>
-		</list>
 	</section>
 </section>
